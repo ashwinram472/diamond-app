@@ -11,6 +11,9 @@ import numpy as np
 
 app = Flask(__name__)
 lmmodel = joblib.load('models/linear_model.pkl')
+rfmodel = joblib.load('models/rf_model.pkl')
+xgmodel = joblib.load('models/xg_model.pkl')
+
 
 
 
@@ -38,9 +41,12 @@ def predict():
         x = np.array([final])
         print(x)
 
-        y_pred = lmmodel.predict(x)
-        print(y_pred[0])
-        return render_template('index.html', pred = y_pred[0][0],name = x,clarity = clarity, color= color, shape = shape)
+        lm_pred = lmmodel.predict(x)[0][0]
+        rf_pred = round(rfmodel.predict(x)[0],2)
+        xg_pred = round(xgmodel.predict(x)[0],2)
+        max_pred = max(lm_pred,rf_pred,xg_pred)
+        min_pred = min(lm_pred,rf_pred,xg_pred)
+        return render_template('index.html', lm_pred = lm_pred,rf_pred=rf_pred,xg_pred=xg_pred,max_pred = max_pred,min_pred = min_pred,name = x,clarity = clarity, color= color, shape = shape)
     
     
 
