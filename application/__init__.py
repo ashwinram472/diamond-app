@@ -23,7 +23,8 @@ def predict():
     shape =['Asscher', 'Cushion', 'Emerald', 'Heart', 'Marquise', 'Oval', 'Pear', 'Princess', 'Radiant', 'Round']
     if request.method == 'POST':
         x = request.form.get('Experience')
-        ca = [int(request.form.get('caratselect'))]
+        # ca = [int(request.form.get('caratselect'))]
+        ca = [3]
         cl = request.form.get('clarityselect')
         co = request.form.get('colorselect')
         sh = request.form.get('shapeselect')
@@ -36,7 +37,7 @@ def predict():
 
         y_pred = lmmodel.predict(x)
         print(y_pred[0])
-        return render_template('index.html', pred = y_pred[0],name = x,clarity = clarity, color= color, shape = shape)
+        return render_template('index.html', pred = y_pred[0][0],name = x,clarity = clarity, color= color, shape = shape)
     
     
 
