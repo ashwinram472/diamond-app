@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, request
+from flask import Flask, url_for, render_template, request, redirect
 import joblib
 import numpy as np
 
@@ -15,6 +15,9 @@ lmmodel = joblib.load('models/linear_model.pkl')
 
 
 @app.route('/')
+def index():
+    return redirect(url_for('predict'))
+    
 @app.route('/predict',methods = ['POST','GET'])
 def predict():
     
