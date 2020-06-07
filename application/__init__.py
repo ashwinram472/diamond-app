@@ -3,18 +3,18 @@ import joblib
 import numpy as np
 
 
-#carat 1
-#clarity [FL, IF, SI1 ,SI2, VS1, VS2, VVS1, VVS2] 8
-#color [D, E, F, G, H, I, J, K] 8
-#Shape [ AS, CU, EC, HS, MQ, OV, PR, PS, RA, RD] 10
-
-
 app = Flask(__name__)
+
+# Loading models
+# Linear model
 lmmodel = joblib.load('models/linear_model.pkl')
+# Random Forest model
 rfmodel = joblib.load('models/rf_model.pkl')
+# XG Boost model
 xgmodel = joblib.load('models/xg_model.pkl')
 
-
+def one_hot(p,li):
+    return [1 if p==x else 0 for x in li]
 
 
 @app.route('/')
@@ -29,14 +29,13 @@ def predict():
     shape =['Asscher', 'Cushion', 'Emerald', 'Heart', 'Marquise', 'Oval', 'Pear', 'Princess', 'Radiant', 'Round']
     if request.method == 'POST':
         x = request.form.get('Experience')
-        # ca = [int(request.form.get('caratselect'))]
-        ca = [3]
-        cl = request.form.get('clarityselect')
-        co = request.form.get('colorselect')
-        sh = request.form.get('shapeselect')
-        claritylist = [1 if cl==x else 0 for x in clarity]
-        colorlist = [1 if co==x else 0 for x in color]
-        shapelist = [1 if sh==x else 0 for x in shape]
+        ca = [float(request.form.get('caratselect'))] #carat
+        cl = request.form.get('clarityselect') #clarity
+        co = request.form.get('colorselect') #color
+        sh = request.form.get('shapeselect') #shape
+        claritylist = one_hot(cl,clarity)
+        colorlist = one_hot(co,color)
+        shapelist = one_hot(sh,shape)
         final = ca + claritylist + colorlist + shapelist
         x = np.array([final])
         print(x)
@@ -44,8 +43,11 @@ def predict():
         lm_pred = lmmodel.predict(x)[0][0]
         rf_pred = round(rfmodel.predict(x)[0],2)
         xg_pred = round(xgmodel.predict(x)[0],2)
+
+        
         max_pred = max(lm_pred,rf_pred,xg_pred)
-        min_pred = min(lm_pred,rf_pred,xg_pred)
+        min_pred = max(0,min(lm_pred,rf_pred,xg_pred))
+
         return render_template('index.html', lm_pred = lm_pred,rf_pred=rf_pred,xg_pred=xg_pred,max_pred = max_pred,min_pred = min_pred,name = x,clarity = clarity, color= color, shape = shape)
     
     

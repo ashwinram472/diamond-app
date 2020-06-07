@@ -146,31 +146,20 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-dark bg-primary topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
 
-          <!-- Topbar Search -->
-          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
-            </div>
-          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav mr-auto">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">Diamond App</a>
-            </div>
 
+              <a class="navbar-brand" href="#">Diamond App</a>
+
+            <span class = "navbar-text text--right">Trained with over 130k samples</span>
 
         </nav>
         <!-- End of Topbar -->
@@ -180,15 +169,16 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 class="h3 mb-0 text-gray-800">Estimator</h1>
+              <h3 class="h5 mb-0 text-gray-800">Select the specifications</h3>
           </div>  
 
           <!-- Content Row -->
         
             <form action = "{{url_for('predict')}}" method="post">
-              <div class="row">
+              <fieldset class= "form-group">
+              <div class="form-row">
                 <!-- Earnings (Monthly) Card Example -->
-                <div class="col-xl-2 col-md-6 mb-4">
+                <div class="col-auto col-xl-2 col-md-6 mb-4">
                   <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
@@ -202,7 +192,8 @@
                             <option value=2>2</option>
                             <option value=3>3</option>
                           </select> -->
-                          <input type="text" name="caratselect" placeholder = "Enter carat" class ="form-control"></input>
+                          <input type="number" step = "0.1" name="caratselect" class ="form-control" placeholder="Enter carat" required></input>
+                         
 
 
                         </div>
@@ -212,7 +203,7 @@
                   </div>
                 </div>
 
-                <!-- Earnings (Monthly) Card Example -->
+                <!-- Clarity -->
                 <div class="col-xl-2 col-md-6 mb-4">
                   <div class="card border-left-success shadow h-100 py-2">
                     <div class="card-body">
@@ -220,8 +211,8 @@
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Clarity</div>
                           <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div> -->
-                          <select id="clarityselect" name = "clarityselect" class="form-control" data-role="select-dropdown" data-profile="minimal">
-                            <option value="" disable selected>Select a clarity</option>
+                          <select id="clarityselect" name = "clarityselect" class="custom-select" data-role="select-dropdown" data-profile="minimal" required>
+                            <option value="" disabled value="" selected hidden>Select any clarity</option>
                             {% for cl in clarity %}
                             
                             <option value="{{cl}}">{{cl}}</option>
@@ -240,7 +231,7 @@
                   </div>
                 </div>
 
-                <!-- Earnings (Monthly) Card Example -->
+                <!-- Color -->
                 <div class="col-xl-2 col-md-6 mb-4">
                   <div class="card border-left-info shadow h-100 py-2">
                     <div class="card-body">
@@ -259,8 +250,8 @@
                           </div> -->
                         </div>
 
-                        <select id="colorselect" name = "colorselect" class="form-control" data-role="select-dropdown" data-profile="minimal">
-                          <option value="" disable selected>Select an color</option>
+                        <select id="colorselect" name = "colorselect" class="custom-select" data-role="select-dropdown" data-profile="minimal" required>
+                          <option value="" disabled selected hidden>Select any color</option>
                           {% for co in color %}
                           
                           <option value="{{co}}">{{co}}</option>
@@ -275,7 +266,7 @@
                   </div>
                 </div>
 
-                <!-- Pending Requests Card Example -->
+                <!-- Shape -->
                 <div class="col-xl-2 col-md-6 mb-4">
                   <div class="card border-left-warning shadow h-100 py-2">
                     <div class="card-body">
@@ -284,8 +275,8 @@
                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Shape</div>
                           <!-- <div class="h5 mb-0 font-weight-bold text-gray-800">18</div> -->
                         </div>
-                        <select id="shapeselect" name = "shapeselect" class="form-control" data-role="select-dropdown" data-profile="minimal">
-                          <option value="" disable selected>Select a shape</option>
+                        <select id="shapeselect" name = "shapeselect" class="custom-select" data-role="select-dropdown" data-profile="minimal" required>
+                          <option value="" disabled value="" selected hidden>Select a shape</option>
                           {% for sh in shape %}
                           
                           <option value="{{sh}}">{{sh}}</option>
@@ -299,13 +290,20 @@
                     </div>
                   </div>
                 </div>
-              
-                <div class="col-xl-2">
+                
+                <!-- Predict BUtton -->
+                <div class="col-xl-2 align-self-center">
                   <button class ="btn btn-primary  align-self-end" type="submit">Predict</button>
                 </div>
-
               </div>
+
+            </fieldset>
             </form>
+            
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h3 class="h5 mb-0 text-gray-800">Predictions of Different ML models</h3>
+          </div>           
+
           
 
 {% if lm_pred %}
@@ -317,7 +315,8 @@
 {% set min_pred = 100 %}
 {% endif %}
           <!-- Content Row 2-->
-          <div class="row">
+          <div class="row row-cols-2">
+            
 
             <!-- Content Column 1-->
             <div class="col-lg-4 col-xl-4 mb-4">
@@ -325,7 +324,7 @@
               <!-- Price of Models -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Price</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Models</h6>
                 </div>
                 <div class="card-body">
                   <h4 class="small font-weight-bold">Linear Model <span class="float-right">${{lm_pred}}</span></h4>
@@ -358,7 +357,7 @@
             {% set min_pred = 0 %}
             {% endif %}
             <!-- Content Column 2-->
-            <div class="col-lg-4 col-xl-4 mb-4">
+            <div class="col-lg-3 col-xl-4 mb-4">
               <!-- Max and Min Price -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
