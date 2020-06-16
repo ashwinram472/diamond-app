@@ -1,6 +1,6 @@
 from application.model import Diamonds
 def data():
-    diamondlist = list(Diamonds.objects.aggregate(*[
+    diamondlist = Diamonds.objects.aggregate(*[
                 {
                     '$group': {
                         '_id': {
@@ -32,5 +32,5 @@ def data():
                 }, {
                     '$limit': 10
                 }
-            ]))
+            ])
     return diamondlist

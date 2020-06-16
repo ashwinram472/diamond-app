@@ -6,6 +6,7 @@ import numpy as np
 from application.data import data
 from application.model import Diamonds
 import pandas as pd
+from application.data import data
 
 
 
@@ -22,7 +23,8 @@ def one_hot(p,li):
 
 @app.route('/api', methods=['GET'])
 def api():
-    return jsonify(Diamonds.objects.all())
+
+    return jsonify(Diamonds.objects.count())
 
 
 @app.route('/')
