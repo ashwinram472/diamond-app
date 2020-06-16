@@ -2,12 +2,11 @@ from flask import Flask, url_for, render_template, request, redirect, jsonify
 from application import app
 import joblib
 import numpy as np
-import pygal
+
 from application.data import data
 from application.model import Diamonds
 import pandas as pd
-import psutil
-import plotly.express as px
+
 
 
 # Loading models
@@ -79,8 +78,7 @@ def charts():
     diamonds = data()
     dataframe= pd.json_normalize(diamonds)
     print(dataframe.shape)
-    fig = px.scatter(dataframe, x="x", y="y", color="color", hover_data =['shape'])
-    fig.write_image("application/static/img/charts.svg")
+
     return render_template('charts.html')
 
 
