@@ -1,0 +1,84 @@
+{% extends 'layout.html' %} {% block content %}
+<!-- Begin Page Content -->
+<style type="text/css">
+  .header {
+    text-align: center;
+    background-color: rgb(136, 185, 229);
+    height: 70px;
+    line-height: 70px;
+  }
+  .chart {
+    margin-top: 30px;
+    text-align: center;
+  }
+</style>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Api</h1>
+
+  <!-- Content Row -->
+  <div class="row">
+    <div class="col">
+      <!-- Area Chart -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Overview</h6>
+        </div>
+        <div class="card-body">
+          Welcome to Diamond Predictor REST API!! Using this service you can get
+          the diamonds data used for building the models used in the estimator
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Donut Chart -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Authentication</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          Currently there is not authentication require to accessing the
+          Diamonds-Predictor API
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Rate Limiting</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          Currently requests are limited to 50000 reponses per api call. Sorry!
+          My mongoatlas is free version
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Responses</h6>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+          Some notes on responses: All repsonses default to JSON format
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->
+
+<!-- End of Main Content -->
+
+{% endblock %}

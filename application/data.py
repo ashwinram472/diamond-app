@@ -24,9 +24,9 @@ def data():
                     '$project': {
                         'x': '$__alias_0', 
                         'y': '$__alias_1', 
-                        'shape': '$__alias_2', 
-                        'color': '$__alias_3', 
-                        'detail': '$__alias_4', 
+                        # 'shape': '$__alias_2', 
+                        # 'color': '$__alias_3', 
+                        # 'detail': '$__alias_4', 
                         '_id': 0
                     }
                 }, {

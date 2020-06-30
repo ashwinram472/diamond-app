@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+  <link rel="icon" href="{{url_for('static',filename = 'img/icon.png')}}"
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ashwin">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Diamond App</title>
 
   <!-- Custom fonts for this template-->
   <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,13 +60,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Learn More</span>
+          <span>About</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">About Diamonds</h6>
-            <a class="collapse-item" href="buttons.html">Ho</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="https://ashwinram472.github.io/" target="_blank">Author</a>
+            <a class="collapse-item" href="cards.html" target="_blank">Models Notebook</a>
           </div>
         </div>
       </li>
@@ -74,15 +74,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>4 C's</span>
+          <span>Diamonds</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">4C's:</h6>
-            <a class="collapse-item" href="{{url_for('carat')}}">Carat</a>
-            <a class="collapse-item" href="utilities-border.html">Color</a>
-            <a class="collapse-item" href="utilities-animation.html">Cut</a>
-            <a class="collapse-item" href="utilities-other.html">Clarity</a>
+            <a class="collapse-item" href="{{url_for('carat')}}">4C's</a>
+            <a class="collapse-item" href="https://www.bluenile.com/" target="_blank">Blue Nile</a>
           </div>
         </div>
       </li>
@@ -122,11 +119,11 @@
           <span>Charts</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
+      <!-- Nav Item - API Doc -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{url_for('apidoc')}}">
           <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
+          <span>API</span></a>
       </li>
 
       <!-- Divider -->
