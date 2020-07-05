@@ -58,17 +58,17 @@ def predict():
         final = ca + claritylist + colorlist + shapelist
         x = np.array([final])
         print(x)
-
+        print(ca, cl, co, sh)
         lm_pred = lmmodel.predict(x)[0][0]
         rf_pred = round(rfmodel.predict(x)[0], 2)
         xg_pred = round(xgmodel.predict(x)[0], 2)
 
         max_pred = max(lm_pred, rf_pred, xg_pred)
         min_pred = max(0, min(lm_pred, rf_pred, xg_pred))
+        ca = ca[0]
+        return render_template('index.html', lm_pred=lm_pred, rf_pred=rf_pred, xg_pred=xg_pred, max_pred=max_pred, min_pred=min_pred, name=x, clarity=clarity, color=color, shape=shape, cas=ca, cls=cl, cos=co, shs=sh, default=False)
 
-        return render_template('index.html', lm_pred=lm_pred, rf_pred=rf_pred, xg_pred=xg_pred, max_pred=max_pred, min_pred=min_pred, name=x, clarity=clarity, color=color, shape=shape)
-
-    return render_template('index.html', clarity=clarity, color=color, shape=shape)
+    return render_template('index.html', clarity=clarity, color=color, shape=shape, default=True)
 
 
 @app.route('/about')
